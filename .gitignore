@@ -1,0 +1,23 @@
+#ignore environment
+venv/
+
+#ignore data
+data/
+*.tif
+*.shp
+__pycache__/
+.ipynb_checkpoints/
+*.log
+*.cpg
+*.dbf
+*.qmd
+*.prj
+*.sbn
+*.shx
+*.qgz
+*.geojson
+*.fgb
+*.zip
+*.tar.gz
+*.kmz
+*.kml

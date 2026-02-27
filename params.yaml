@@ -1,0 +1,72 @@
+#project_2010_classification yaml
+project:
+  name: "Regreening"
+  crs: "EPSG:4326"
+
+
+#Training samples merger parameters
+training_samples:
+  kmz_dir: 'data/raw/labels'
+
+#Indices calculation parameters
+indices:
+  imagery_folder: 'data/raw/satellite'
+
+# Satellite mission mapping by year of our analysis
+year_mission_map:
+  2010: landsat5
+  2015: landsat8
+  2020: sentinel2
+  2025: sentinel2
+
+#mapping of band names for each satellite mission
+missions:
+  sentinel2:
+    bands:
+      blue: B2
+      green: B3
+      red: B4
+      nir: B8
+      swir1: B11
+      swir2: B12
+
+  landsat8:
+    bands:
+      blue: SR_B2
+      green: SR_B3
+      red: SR_B4
+      nir: SR_B5
+      swir1: SR_B6
+      swir2: SR_B7
+      
+  landsat5:
+    bands:
+      blue: SR_B1
+      green: SR_B2
+      red: SR_B3
+      nir: SR_B4
+      swir1: SR_B5
+      swir2: SR_B7
+
+
+# Preprocessing parameters
+preprocessing:
+  excluded_bands: {'B8A', 'B11', 'B12'} # Exclude bands with high noise or low relevance
+
+# 4. Classification Engine Parameters
+classification:
+  imagery_folder: 'data/raw/satellite'
+  labels_folder: "data/raw/labels"
+  processed_folder: 'data/processed'
+  model_type: "random_forest"
+
+tree_height:
+  dsm_path: 'data/drone_samples/dsm_COG.tif'
+  dtm_path: 'data/drone_samples/dtm_COG.tif'
+  chm_output_path: 'data/processed/chm.tif'
+  clipped_chm_output_path: 'data/processed/clipped_chm.tif'
+  plot_shapefile_path: 'data/shapes/farmers_polygons.shp'
+  metrics_output_path: 'data/processed/tree_height_metrics.shp'
+  height_threshold_m: 2.0
+  height_bins: 4
+  nodata_value: -9999
