@@ -65,7 +65,7 @@ tree_height:
   dtm_path: 'data/drone_samples/dtm_COG.tif'
   chm_output_path: 'data/processed/chm.tif'
   clipped_chm_output_path: 'data/processed/clipped_chm.tif'
-  plot_shapefile_path: 'data/shapes/farmers_polygons.shp'
+  plot_shapefile_path: 'data/shapes/awg_farmers_boundaries.shp'
   metrics_output_path: 'data/processed/tree_height_metrics.shp'
   height_threshold_m: 2.0
   height_bins: 4
