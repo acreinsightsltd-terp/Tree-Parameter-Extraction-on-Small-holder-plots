@@ -21,12 +21,13 @@ This system is composed of multiple pipelines that transform raw, inconsistent d
 ---
 
 ## Project Structure
-.gitignore
-flow_pipeline.py
-logging_config.py
-logs
-main.py
-params.yaml
+
+.gitignore  
+flow_pipeline.py  
+logging_config.py  
+logs  
+main.py  
+params.yaml  
 pipelines  
    |-- biomass  
    |   |-- notebooks  
