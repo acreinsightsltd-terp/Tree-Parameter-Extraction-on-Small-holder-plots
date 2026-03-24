@@ -1,0 +1,16 @@
+# requirements.txt
+pandas
+geopandas
+matplotlib
+numpy
+rasterio
+rasterstats
+scipy   
+scikit-learn
+logging
+shapely
+seaborn
+joblib
+tqdm
+rioxarray
+rapidfuzz
