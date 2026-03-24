@@ -27,49 +27,49 @@ logging_config.py
 logs
 main.py
 params.yaml
-pipelines
-   |-- biomass
-   |   |-- notebooks
-   |   |   |-- biomass.ipynb
-   |-- change_detection
-   |   |-- notebooks
-   |   |   |-- analysis.ipynb
-   |-- classification
-   |   |-- notebooks
-   |   |   |-- classification.ipynb
-   |   |-- src
-   |   |   |-- classification.py
-   |-- indices
-   |   |-- notebooks
-   |   |   |-- indices.ipynb
-   |   |-- src
-   |   |   |-- indices.py
-   |-- names_cleaning
-   |   |-- notebooks
-   |   |   |-- complete_list_cleaning.ipynb
-   |   |   |-- names_cleaning.ipynb
-   |-- preprocessing
-   |   |-- notebooks
-   |   |   |-- preprocessing.ipynb
-   |   |-- src
-   |   |   |-- preprocessing.py
-   |-- training_samples_merger
-   |   |-- notebooks
-   |   |   |-- merge_samples.ipynb
-   |   |-- src
-   |   |   |-- merger.py
-   |-- tree_height
-   |   |-- src
-   |   |   |-- chm.py
-   |   |   |-- perplot.py
-shared
-   |-- utils
-   |   |-- utils.py
-data
-   |-- raw
-   |-- processed
-   |-- shapes
-
+pipelines  
+   |-- biomass  
+   |   |-- notebooks  
+   |   |   |-- biomass.ipynb  
+   |-- change_detection  
+   |   |-- notebooks  
+   |   |   |-- analysis.ipynb  
+   |-- classification  
+   |   |-- notebooks  
+   |   |   |-- classification.ipynb  
+   |   |-- src  
+   |   |   |-- classification.py  
+   |-- indices  
+   |   |-- notebooks  
+   |   |   |-- indices.ipynb  
+   |   |-- src  
+   |   |   |-- indices.py  
+   |-- names_cleaning  
+   |   |-- notebooks  
+   |   |   |-- complete_list_cleaning.ipynb  
+   |   |   |-- names_cleaning.ipynb  
+   |-- preprocessing  
+   |   |-- notebooks  
+   |   |   |-- preprocessing.ipynb  
+   |   |-- src  
+   |   |   |-- preprocessing.py  
+   |-- training_samples_merger  
+   |   |-- notebooks  
+   |   |   |-- merge_samples.ipynb  
+   |   |-- src  
+   |   |   |-- merger.py  
+   |-- tree_height  
+   |   |-- src  
+   |   |   |-- chm.py  
+   |   |   |-- perplot.py  
+shared  
+   |-- utils  
+   |   |-- utils.py  
+data  
+   |-- raw  
+   |-- processed  
+   |-- shapes  
+  
 Each pipeline is modular and documented independently.
 
 ---
