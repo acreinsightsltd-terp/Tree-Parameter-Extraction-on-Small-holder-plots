@@ -22,56 +22,70 @@ This system is composed of multiple pipelines that transform raw, inconsistent d
 
 ## Project Structure
 
-.gitignore  
-flow_pipeline.py  
-logging_config.py  
-logs  
-main.py  
-params.yaml  
-pipelines  
-   |-- biomass  
-   |   |-- notebooks  
-   |   |   |-- biomass.ipynb  
-   |-- change_detection  
-   |   |-- notebooks  
-   |   |   |-- analysis.ipynb  
-   |-- classification  
-   |   |-- notebooks  
-   |   |   |-- classification.ipynb  
-   |   |-- src  
-   |   |   |-- classification.py  
-   |-- indices  
-   |   |-- notebooks  
-   |   |   |-- indices.ipynb  
-   |   |-- src  
-   |   |   |-- indices.py  
-   |-- names_cleaning  
-   |   |-- notebooks  
-   |   |   |-- complete_list_cleaning.ipynb  
-   |   |   |-- names_cleaning.ipynb  
-   |-- preprocessing  
-   |   |-- notebooks  
-   |   |   |-- preprocessing.ipynb  
-   |   |-- src  
-   |   |   |-- preprocessing.py  
-   |-- training_samples_merger  
-   |   |-- notebooks  
-   |   |   |-- merge_samples.ipynb  
-   |   |-- src  
-   |   |   |-- merger.py  
-   |-- tree_height  
-   |   |-- src  
-   |   |   |-- chm.py  
-   |   |   |-- perplot.py  
-shared  
-   |-- utils  
-   |   |-- utils.py  
-data  
-   |-- raw  
-   |-- processed  
-   |-- shapes  
+```text
+.
+├── data/
+│   ├── processed/
+│   ├── raw/
+│   └── shapes/
+├── logs/
+├── pipelines/
+│   ├── biomass/
+│   │   └── notebooks/
+│   │       └── biomass.ipynb
+│   ├── change_detection/
+│   │   └── notebooks/
+│   │       └── analysis.ipynb
+│   ├── classification/
+│   │   ├── notebooks/
+│   │   │   └── classification.ipynb
+│   │   └── src/
+│   │       └── classification.py
+│   ├── indices/
+│   │   ├── notebooks/
+│   │   │   └── indices.ipynb
+│   │   └── src/
+│   │       └── indices.py
+│   ├── names_cleaning/
+│   │   └── notebooks/
+│   │       ├── complete_list_cleaning.ipynb
+│   │       └── names_cleaning.ipynb
+│   ├── preprocessing/
+│   │   ├── notebooks/
+│   │   │   └── preprocessing.ipynb
+│   │   └── src/
+│   │       └── preprocessing.py
+│   ├── training_samples_merger/
+│   │   ├── notebooks/
+│   │   │   └── merge_samples.ipynb
+│   │   └── src/
+│   │       └── merger.py
+│   └── tree_height/
+│       └── src/
+│           ├── chm.py
+│           └── perplot.py
+├── shared/
+│   └── utils/
+│       └── utils.py
+├── .gitignore
+├── flow_pipeline.py
+├── logging_config.py
+├── main.py
+└── params.yaml 
   
 Each pipeline is modular and documented independently.
+
+```text
+.
+├── data/               # Local data storage (raw imagery, generated shapes, ignored by git)
+├── logs/               # Pipeline execution logs
+├── pipelines/          # Core geospatial processing modules (Biomass, CHM, Classification)
+├── shared/             # Common utility functions used across multiple pipelines
+├── .gitignore          # Excludes large data and logs from version control
+├── flow_pipeline.py    # Orchestrates the execution order of the sub-pipelines
+├── logging_config.py   # Standardized logging setup for the project
+├── main.py             # Primary entry point to run the impact assessment
+└── params.yaml         # Central configuration for pipeline parameters (e.g., indices thresholds)
 
 ---
 
