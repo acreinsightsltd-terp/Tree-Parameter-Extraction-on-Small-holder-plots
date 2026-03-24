@@ -22,69 +22,32 @@ This system is composed of multiple pipelines that transform raw, inconsistent d
 
 ## Project Structure
 
+The repository is modular, with each pipeline independently documented and orchestrated by a central flow script.
+
 ```text
 .
-├── data/
+├── data/               # Ignored by git. Ensure raw imagery and external DSM/DTM are placed here.
 │   ├── processed/
 │   ├── raw/
 │   └── shapes/
-├── logs/
-├── pipelines/
-│   ├── biomass/
-│   │   └── notebooks/
-│   │       └── biomass.ipynb
-│   ├── change_detection/
-│   │   └── notebooks/
-│   │       └── analysis.ipynb
-│   ├── classification/
-│   │   ├── notebooks/
-│   │   │   └── classification.ipynb
-│   │   └── src/
-│   │       └── classification.py
-│   ├── indices/
-│   │   ├── notebooks/
-│   │   │   └── indices.ipynb
-│   │   └── src/
-│   │       └── indices.py
-│   ├── names_cleaning/
-│   │   └── notebooks/
-│   │       ├── complete_list_cleaning.ipynb
-│   │       └── names_cleaning.ipynb
-│   ├── preprocessing/
-│   │   ├── notebooks/
-│   │   │   └── preprocessing.ipynb
-│   │   └── src/
-│   │       └── preprocessing.py
-│   ├── training_samples_merger/
-│   │   ├── notebooks/
-│   │   │   └── merge_samples.ipynb
-│   │   └── src/
-│   │       └── merger.py
-│   └── tree_height/
-│       └── src/
-│           ├── chm.py
-│           └── perplot.py
-├── shared/
-│   └── utils/
-│       └── utils.py
-├── .gitignore
-├── flow_pipeline.py
-├── logging_config.py
-├── main.py
-└── params.yaml 
-  
-Each pipeline is modular and documented independently.
-
-.
-├── data/               # Local data storage (raw imagery, generated shapes, ignored by git)
 ├── logs/               # Pipeline execution logs
-├── pipelines/          # Core geospatial processing modules (Biomass, CHM, Classification)
-├── shared/             # Common utility functions used across multiple pipelines
-├── .gitignore          # Excludes large data and logs from version control
+├── pipelines/          # Core geospatial processing modules
+│   ├── biomass/
+│   ├── change_detection/
+│   ├── classification/
+│   ├── indices/
+│   ├── names_cleaning/
+│   ├── preprocessing/
+│   ├── training_samples_merger/
+│   └── tree_height/
+├── shared/             # Common utility functions
+│   └── utils/
+├── .gitignore          
 ├── flow_pipeline.py    # Orchestrates the execution order of the sub-pipelines
-├── logging_config.py   # Standardized logging setup for the project
-├── main.py             # Primary entry point to run the impact assessment
-└── params.yaml         # Central configuration for pipeline parameters (e.g., indices thresholds)
+├── logging_config.py   # Standardized logging setup
+├── main.py             # Primary entry point
+├── params.yaml         # Central configuration (thresholds, years, bands)
+└── requirements.txt    # Dependency list for reproducibility
 ```
 
 ---
@@ -156,11 +119,10 @@ The classified `.tif` outputs together with vegetation indices and rainfall tren
 
 To assess structural vegetation changes:
 
-- **DSM (Digital Surface Model)** and **DTM (Digital Terrain Model)** were obtained externally  
-- CHM was computed as:
-  $CHM=DSM-DTM
-
-- CHM rasters were clipped to farm plot boundaries  
+- **DSM (Digital Surface Model)** and **DTM (Digital Terrain Model)** are utilized. 
+- *Note: Due to file size limitations, DSM and DTM rasters are not tracked in version control. They must be downloaded externally and placed in `data/raw/` prior to execution.*
+- CHM is computed as: $CHM = DSM - DTM$
+- CHM rasters are then clipped to the validated farm plot boundaries.
 
 ---
 
@@ -246,9 +208,12 @@ This ensures flexibility and reproducibility.
 
 ## ▶️ Running the Project
 
-1. Install dependencies:
+1. Set up the environment:
+It is highly recommended to use a virtual environment.
 
    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use: venv\Scripts\activate
     pip install -r requirements.txt
 2. Configure `params.yaml` as needed
 3. Run the pipeline
