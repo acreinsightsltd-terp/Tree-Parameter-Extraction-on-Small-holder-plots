@@ -75,7 +75,6 @@ This system is composed of multiple pipelines that transform raw, inconsistent d
   
 Each pipeline is modular and documented independently.
 
-```text
 .
 ├── data/               # Local data storage (raw imagery, generated shapes, ignored by git)
 ├── logs/               # Pipeline execution logs
@@ -86,6 +85,7 @@ Each pipeline is modular and documented independently.
 ├── logging_config.py   # Standardized logging setup for the project
 ├── main.py             # Primary entry point to run the impact assessment
 └── params.yaml         # Central configuration for pipeline parameters (e.g., indices thresholds)
+```
 
 ---
 
@@ -109,8 +109,8 @@ Before any analysis, the system had to establish:
 
 ### 1. Data Cleaning & Boundary Creation
 
-- Farmer names were cleaned, normalized, and consolidated into a **single source of truth**
-- Farm boundaries were **digitized from high-resolution drone imagery**
+- Farmer names were cleaned, normalized, and consolidated into a single source of truth
+- Farm boundaries were digitized from high-resolution drone imagery
 - Output: validated plot polygons with consistent farmer identifiers
 
 ---
@@ -139,9 +139,9 @@ To ensure comparability:
   - 2020
   - 2025  
 
-The classified `.tif` outputs were then analyzed in a notebook to:
+The classified `.tif` outputs together with vegetation indices and rainfall trends were then analyzed in a notebook to:
 
-- Assess **overall vegetation trends** across the study area  
+- Assess **overall vegetation trends** across the study area 
 - Compare **intervention plots vs control areas**  
 
 #### Output:
@@ -185,6 +185,9 @@ Using CHM and plot polygons:
 A shapefile containing:
 
 - Farmer name  
+- Trees given
+- Trees alive
+- Species
 - Plot geometry  
 - Tree height metrics  
 
@@ -234,7 +237,8 @@ Examples include:
 
 - Canopy height threshold  
 - Years of analysis  
-- Classification settings  
+- Classification settings 
+- Indices target bands 
 
 This ensures flexibility and reproducibility.
 
@@ -248,7 +252,7 @@ This ensures flexibility and reproducibility.
     pip install -r requirements.txt
 2. Configure `params.yaml` as needed
 3. Run the pipeline
- 
+
    ```bash
    python main.py
 4. Outputs will be generated in the specified directories
