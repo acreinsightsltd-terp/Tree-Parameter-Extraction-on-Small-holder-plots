@@ -4,6 +4,7 @@ from pipelines.preprocessing.src.preprocessing import Preprocessor
 from pipelines.classification.src.classification import RFClassifier
 from pipelines.tree_height.src.chm import CHM
 from pipelines.tree_height.src.perplot import PerPlotMetrics
+from pipelines.biomass.src.biomass import Biomass
 import yaml
 import logging
 
@@ -83,10 +84,17 @@ class Flow_State:
                   self.params['tree_height']['plot_shapefile_path']
                   )
         # chm.generate_chm()
-        # chm.mask_chm()
+        chm.mask_chm()
         perplot = PerPlotMetrics(self.params['tree_height']['clipped_chm_output_path'],
                                  self.params['tree_height']['plot_shapefile_path'],
                                  self.params['tree_height']['metrics_output_path'],
                                  self.params
                                  )
-        gdf = perplot.compute_all_metrics()
+        perplot.compute_all_metrics()
+        
+    def biomass_pipeline(self) -> None:
+        biomass = Biomass(self.params['biomass']['tree_height_metrics_path'],
+                          self.params['biomass']['wood_density'],
+                          self.params['biomass']['biomass_output_path']
+                          )
+        biomass.calculate_plot_biomass()
