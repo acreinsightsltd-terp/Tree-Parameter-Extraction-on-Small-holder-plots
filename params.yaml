@@ -53,7 +53,7 @@ missions:
 preprocessing:
   excluded_bands: {'B8A', 'B11', 'B12'} # Exclude bands with high noise or low relevance
 
-# 4. Classification Engine Parameters
+# Classification Engine Parameters
 classification:
   imagery_folder: 'data/raw/satellite'
   labels_folder: "data/raw/labels"
@@ -70,3 +70,8 @@ tree_height:
   height_threshold_m: 2.0
   height_bins: 4
   nodata_value: -9999
+
+biomass:
+  tree_height_metrics_path: 'data/shapes/tree_height_metrics.shp'
+  biomass_output_path: 'data/processed/tree_biomass.shp'
+  wood_density: 0.55
