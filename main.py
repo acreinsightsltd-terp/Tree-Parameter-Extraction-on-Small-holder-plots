@@ -16,4 +16,5 @@ if __name__ == "__main__":
     # flow.indices_pipeline()
     # flow.preprocessing_pipeline()
     # flow.classification_pipeline()
-    flow.tree_height_pipeline()
+    # flow.tree_height_pipeline()
+    flow.biomass_pipeline()
